@@ -1,0 +1,51 @@
+<h3 class="text-center">Appliance List</h3>
+<table class="table table-striped"> 
+  <thead>
+    <tr>
+      <th>Serial Number</th>
+      <th>Brand</th>
+      <th>Model</th>
+      <th>Status</th>
+      <th>Date</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <input class="form-control" type="text" name="serialNumber" [(ngModel)] ="serialNumber"
+            (ngModelChange)="SearchOnSerialNumber()" placeholder="Serial No">
+      </td>
+      <td>
+        <input class="form-control" type="text" name="brand" [(ngModel)] ="brand"
+            (ngModelChange)="SearchOnBrand()" placeholder="brand">
+      </td>
+      <td>
+        <input class="form-control" type="text" name="model" [(ngModel)] ="model"
+            (ngModelChange)="SearchOnModel()" placeholder="model">
+      </td>
+      <td>
+        <input class="form-control" type="text" name="status" [(ngModel)] ="status"
+            (ngModelChange)="SearchOnStatus()" placeholder="Status">
+      </td>
+      <td>
+        <input class="form-control" type="text" name="date" [(ngModel)] ="date"
+            (ngModelChange)="SearchOnDate()" placeholder="Date">
+      </td>
+
+    </tr>
+    <tr *ngFor="let appliance of appliances">
+      <td>{{appliance.serialNumber}}</td>
+      <td>{{appliance.brand}}</td>
+      <td>{{appliance.model}}</td>
+      <td>{{appliance.status}}</td>
+      <td>{{appliance.date}}</td>
+      <td style="white-space: nowrap">
+        <div class="container">
+        <button class="btn btn-info" (click)="updateAppliance(appliance.id)">update</button>
+        <button class="btn btn-danger" style="margin-left:10px" (click)="deleteAppliance(appliance.id)">delete</button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
